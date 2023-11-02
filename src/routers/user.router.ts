@@ -8,5 +8,5 @@ export const userRouter: Router = Router()
 
 userRouter.post('', verifyUniqueUserEmail, createUserController )
 userRouter.get('', verifyAdm, readAllUserController  )
-userRouter.patch('/:id', verifyUserExist, verifyToken,verifyPermissions, verifyAdm,  validateBody(updateUSerSchema), updateUserController )
+userRouter.patch('/:id', verifyToken,verifyPermissions, verifyAdm,  validateBody(updateUSerSchema),verifyUserExist, updateUserController )
 userRouter.delete('/:id', verifyToken, verifyUserExist, verifyPermissions, deleteController)
