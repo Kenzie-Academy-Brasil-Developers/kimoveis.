@@ -8,23 +8,23 @@ export default class RealEstate {
     @PrimaryGeneratedColumn('increment')
     id:number
 
-    @Column({default:false})
+    @Column({type:"boolean", default:false})
     sold:boolean
 
-    @Column("decimal",{precision:12, scale:2})
+    @Column({type:"decimal",precision:12, scale:2, default:0})
     value:number | string
 
-    @Column({})
+    @Column({type:"integer"})
     size:number
 
     @CreateDateColumn({type:'date'})
-    createAt:string
+    createdAt:string
 
     @UpdateDateColumn({type:'date'})
-    updateAt:string
+    updatedAt:string
     
-    @OneToMany(() => Schedule, (schedule) => schedule.realEstate)
-    schedule:Schedule[]
+    @OneToMany(() => Schedule, (schedules) => schedules.realEstate)
+    schedules:Schedule[]
 
     @OneToOne(() => Address, (Address) => Address.realEstate)
     @JoinColumn()

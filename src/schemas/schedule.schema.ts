@@ -8,5 +8,5 @@ export const scheduleSchema = z.object({
     userId: z.number().positive().int()
 })
 
-export const createscheduleSchema = scheduleSchema.omit({id:true, userId:true})
+export const createScheduleSchema = scheduleSchema.omit({id:true, userId:true})
 

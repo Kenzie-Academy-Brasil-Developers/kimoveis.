@@ -8,7 +8,7 @@ import { sessionRouter } from "./session.router";
 export const routes: Router = Router()
 
 routes.use('/users', userRouter)
-routes.use('login', sessionRouter)
+routes.use('/login', sessionRouter)
 routes.use('/categories', categoriesRouter)
 routes.use('/realEstate', realEstateRouter)
 routes.use('/schedules', scheduleRouter)

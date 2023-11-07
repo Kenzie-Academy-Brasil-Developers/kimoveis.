@@ -32,5 +32,14 @@ export const verifyUserScheduleExists = async (req:Request, res:Response, next:N
     if(schedule) throw new AppError("User schedule to this real estate at this date and time already exists", 409)
 
     return next()
-
 }    
+
+export const verifyParamRealEstateExist = async (req:Request, res:Response, next:NextFunction):Promise<void>=> { 
+    const { id } = req.params
+
+    const realEstate = await realEstateRepo.findOne({where:{id:Number(id)}})
+
+    if(!realEstate) throw new AppError("RealEstate not found", 404)
+
+    return next()
+}

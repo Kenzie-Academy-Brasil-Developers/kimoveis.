@@ -9,12 +9,13 @@ export const createRealEstateService = async (data:CreateRealEstate): Promise<Re
     if(!category) throw new AppError("Category not found", 404)
 
     const address: Address = await addressRepo.save(data.address)
-    const realEstate: RealEstate | null = await realEstateRepo.save({...data, address, category: category!})
+    const realEstate: RealEstate = await realEstateRepo.save({...data, address: address!, category: category!})
 
     return realEstate
 }
 
 export const readRealEstateService = async (): Promise<RealEstate[]> => {
+
     return await realEstateRepo.find({
         relations:{
             address:true
